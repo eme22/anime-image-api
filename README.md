@@ -13,7 +13,7 @@ For Maven
 ```  
 ```xml  
 <dependency>  
-    <groupId>com.github.Waifu-pics</groupId>  
+    <groupId>com.github.eme22</groupId>  
     <artifactId>anime-image-api</artifactId>  
     <version>0.1</version>  
 </dependency>  
