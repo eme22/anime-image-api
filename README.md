@@ -15,7 +15,7 @@ For Maven
 <dependency>  
     <groupId>com.github.Waifu-pics</groupId>  
     <artifactId>anime-image-api</artifactId>  
-    <version>0.1</version>  
+    <version>0.2</version>  
 </dependency>  
 ```  
   
@@ -29,7 +29,7 @@ allprojects {
 ```  
 ```groovy  
 dependencies {  
-    implementation 'com.github.eme22:anime-image-api:0.1'  
+    implementation 'com.github.eme22:anime-image-api:0.2'  
 }  
 ```  
 ## Examples

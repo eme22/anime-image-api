@@ -1,6 +1,5 @@
 package com.eme22.anime;
 
-import java.io.BufferedInputStream;
 import java.net.URL;
 
 import static com.eme22.anime.Util.getBuffer;
@@ -53,9 +52,7 @@ public class WaifuClient {
         try {
             URL url = new URL(String.format("%s/%s/%s", Util.WAIFU_BASEURL, rating, type));
             return getString(url);
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
-        }
+        } catch (Exception ignored) { }
 
         return "";
     }
