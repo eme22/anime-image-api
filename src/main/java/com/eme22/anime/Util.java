@@ -14,6 +14,8 @@ public class Util {
 
     public static final String WAIFU_BASEURL = "https://api.waifu.pics";
     public static final String NEKOS_BASEURL = "https://nekos.life/api/v2/img";
+    public static final String KAWAII_BASEURL = "https://kawaii.up.railway.app/";
+    public static final String HM_BASEURL = "https://hmtai.herokuapp.com/";
 
     public static String getString(URL url) throws IOException {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -30,5 +32,19 @@ public class Util {
     protected static Image getBuffer(String url) throws Exception {
         BufferedInputStream stream = new BufferedInputStream(new URL(url).openStream());
         return new Image(stream, url);
+    }
+
+    protected static String getURL(String baseUrl, Boolean nsfw, String type) {
+        try {
+            URL url;
+            if (nsfw != null)
+                url = new URL(String.format("%s/%s/%s", baseUrl, nsfw ? "nsfw" : "sfw", type));
+            else
+                url = new URL(String.format("%s/%s", baseUrl, type));
+
+            return getString(url);
+        } catch (Exception ignored) { }
+
+        return "";
     }
 }
