@@ -14,7 +14,7 @@ public class Util {
 
     public static final String WAIFU_BASEURL = "https://api.waifu.pics";
     public static final String NEKOS_BASEURL = "https://nekos.life/api/v2/img";
-    public static final String KAWAII_BASEURL = "https://kawaii.up.railway.app/";
+    public static final String KAWAII_BASEURL = "https://kawaii.up.railway.app/api/v1";
     public static final String HM_BASEURL = "https://hmtai.herokuapp.com/";
 
     public static String getString(URL url) throws IOException {
