@@ -16,7 +16,7 @@ public class AnimeImageClient {
 
         String image = Util.getURL(NEKOS_BASEURL, null, endpoint.toString().toLowerCase());
 
-        log.info("Imagen Recibida desde la url"+ image);
+        log.debug("Imagen Recibida desde la url"+ image);
 
         return image;
     }

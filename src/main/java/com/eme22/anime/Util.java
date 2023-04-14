@@ -32,13 +32,11 @@ public class Util {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("Url: "+ url);
-        log.warn("Url: "+ response.statusCode());
+        log.debug("Url: "+ response.statusCode());
 
         String responseBody = response.body();
 
-        System.out.println("Body: "+ responseBody);
-        log.warn("Body: "+ responseBody);
+        log.debug("Body: "+ responseBody);
 
         JSONObject jsonObject = new JSONObject(responseBody);
 
