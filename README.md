@@ -29,7 +29,7 @@ allprojects {
 ```  
 ```groovy  
 dependencies {  
-    implementation 'com.github.eme22:anime-image-api:0.5'  
+    implementation 'com.github.eme22:anime-image-api:0.5.1'  
 }  
 ```  
 ## Examples
