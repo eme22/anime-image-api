@@ -1,5 +1,5 @@
 
-Minimal Java wrapper for [waifu.pics](https://waifu.pics), [nekos.life](https://nekos.life), [hmtai](https://hmtai.herokuapp.com) and my own service: [kawaii] (https://kawaii.up.railway.app)
+Minimal Java wrapper for [waifu.pics](https://waifu.pics), [nekos.life](https://nekos.life), [hmtai](https://hmtai.herokuapp.com) and my own service: [kawaii](https://kawaii.up.railway.app)
 
 ## Add to project  
 For Maven  
