@@ -15,7 +15,7 @@ For Maven
 <dependency>  
     <groupId>com.github.eme22</groupId>  
     <artifactId>anime-image-api</artifactId>  
-    <version>0.5</version>  
+    <version>0.5.1</version>  
 </dependency>  
 ```  
   
