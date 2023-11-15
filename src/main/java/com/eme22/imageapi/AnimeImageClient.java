@@ -123,6 +123,25 @@ public class AnimeImageClient {
         return getImage(WAIFU, category.toString());
     }
 
+    public String getImage(HM_NSFW category) {
+        return getImage(HM, category.toString());
+    }
+
+    public String getImage(HM_SFW category) {
+        return getImage(HM, category.toString());
+    }
+
+    public String getImage(NEKO category) {
+        return getImage(NEKOS, category.toString());
+    }
+    public String getImage(WAIFU_NSFW category) {
+        return getImage(WAIFU, category.toString());
+    }
+
+    public String getImage(WAIFU_SFW category) {
+        return getImage(WAIFU, category.toString());
+    }
+
     public String getImage(String endpoint, String category) {
 
         Endpoint endpoint1 = Util.findEndpointByName(endpoints, endpoint);
