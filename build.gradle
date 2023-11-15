@@ -1,23 +1,28 @@
 plugins {
     id 'java-library'
     id("dev.jacomet.logging-capabilities") version "0.11.0"
+    id "io.freefair.lombok" version "8.4"
 }
 
 group 'com.eme22'
-version = '0.5.1'
+version = '0.9.0'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
 
-    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
-    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.21.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.21.1'
 
-    implementation 'org.json:json:20230227'
+    implementation 'org.json:json:20231013'
+    implementation 'com.jayway.jsonpath:json-path:2.8.0'
+
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+
 }
 
 test {

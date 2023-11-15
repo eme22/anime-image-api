@@ -1,6 +1,17 @@
-package com.eme22.anime;
+package com.eme22.imageapi.util;
 
 public class Endpoints {
+
+    public static final String WAIFU_BASEURL = "https://api.waifu.pics/";
+    public static final String NEKOS_BASEURL = "https://nekos.life/api/v2/img/";
+    public static final String HM_BASEURL = "https://hmtai.hatsunia.cfd/";
+    public static final String WAIFU = "waifu";
+    public static final String NEKOS = "nekos";
+    public static final String HM = "hmtai";
+
+    public static final String NSFW = "nsfw";
+    public static final String SFW = "sfw";
+    public static final String defaultPath = "$.url";
 
     public enum WAIFU_SFW {
         WAIFU,
