@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 @Log4j2
 public class Util {
 
-    public static String getResponse(HttpClient client, String url) throws IOException {
+    private static String getResponse(HttpClient client, String url) throws IOException {
 
         HttpGet request = new HttpGet(url);
 
@@ -49,7 +49,7 @@ public class Util {
         return Util.getResponseData(response, category1.getOverrrideResponseJsonPath() ? category1.getResponseJsonPath() : endpoint1.getResponseJsonPath(), endpoint1.getResponseJsonPathRegex());
     }
 
-    public static String getURL(String baseUrl, Collection<String> paths) throws IOException {
+    private static String getURL(String baseUrl, Collection<String> paths) throws IOException {
 
         if (!baseUrl.contains("%s")) {
             return baseUrl + String.join("/", paths);
@@ -62,7 +62,7 @@ public class Util {
         return baseUrl;
     }
 
-    public static String getResponseData(String response, String regex, Boolean jsonPath) {
+    private static String getResponseData(String response, String regex, Boolean jsonPath) {
         if (jsonPath) {
             return JsonPath.read(response, regex);
         }
