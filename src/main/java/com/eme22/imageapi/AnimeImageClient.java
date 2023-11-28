@@ -7,8 +7,7 @@ import com.eme22.imageapi.util.Util;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClients;
+import okhttp3.OkHttpClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import static com.eme22.imageapi.util.Util.parseEndpoint;
 public class AnimeImageClient {
 
     @Setter
-    private HttpClient httpClient = HttpClients.createDefault();
+    private OkHttpClient httpClient = new OkHttpClient();
     @Getter @Setter
     private Collection<Endpoint> endpoints = new ArrayList<>();
 
@@ -36,12 +35,12 @@ public class AnimeImageClient {
         }
     }
 
-    public AnimeImageClient(HttpClient httpClient) {
+    public AnimeImageClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         registerEndPoints(Util.getDefaultEndpoints());
     }
 
-    public AnimeImageClient(HttpClient httpClient, boolean addDefault) {
+    public AnimeImageClient(OkHttpClient httpClient, boolean addDefault) {
         this.httpClient = httpClient;
         if (addDefault) {
             registerEndPoints(Util.getDefaultEndpoints());
@@ -60,12 +59,12 @@ public class AnimeImageClient {
         }
     }
 
-    public AnimeImageClient(HttpClient httpClient, Collection<Endpoint> endpoints) {
+    public AnimeImageClient(OkHttpClient httpClient, Collection<Endpoint> endpoints) {
         this.httpClient = httpClient;
         this.endpoints = endpoints;
     }
 
-    public AnimeImageClient(HttpClient httpClient, Collection<Endpoint> endpoints, boolean addDefault) {
+    public AnimeImageClient(OkHttpClient httpClient, Collection<Endpoint> endpoints, boolean addDefault) {
         this.httpClient = httpClient;
         this.endpoints = endpoints;
         if (addDefault) {
@@ -126,7 +125,12 @@ public class AnimeImageClient {
     public String getImage(HM_NSFW category) {
         return getImage(HM, category.toString());
     }
-
+    public String getImage(KAWAII_SFW category) {
+        return getImage(HM, category.toString());
+    }
+    public String getImage(KAWAII_NSFW category) {
+        return getImage(HM, category.toString());
+    }
     public String getImage(HM_SFW category) {
         return getImage(HM, category.toString());
     }
@@ -195,6 +199,18 @@ public class AnimeImageClient {
 
     public Image downloadNekosImage(NEKO category) {
         return downloadImage(NEKOS, category.toString());
+    }
+
+    public Image downloadKawaiiImage(KAWAII_SFW category) {
+        return downloadImage(KAWAII, category.toString());
+    }
+
+    public Image downloadKawaiiImage(String category) {
+        return downloadImage(KAWAII, category);
+    }
+
+    public Image downloadKawaiiImage(KAWAII_NSFW category) {
+        return downloadImage(KAWAII, category.toString());
     }
 
     public Image downloadImage(String endpoint, String category) {

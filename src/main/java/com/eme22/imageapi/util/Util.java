@@ -4,32 +4,35 @@ import com.eme22.imageapi.model.Category;
 import com.eme22.imageapi.model.Endpoint;
 import com.jayway.jsonpath.JsonPath;
 import lombok.extern.log4j.Log4j2;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Log4j2
 public class Util {
 
-    private static String getResponse(HttpClient client, String url) throws IOException {
+    private static String getResponse(OkHttpClient client, String url) throws IOException {
 
-        HttpGet request = new HttpGet(url);
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
-        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request)) {
+        try (Response response = client.newCall(request).execute()) {
 
-            log.debug("Response Status: "+ response.getStatusLine().getReasonPhrase());
+            log.debug("Response Status: "+ response.code());
 
-            return EntityUtils.toString(response.getEntity());
+            return Objects.requireNonNull(response.body()).string();
         }
+
     }
 
     public static Image getBuffer(String url) throws IOException {
@@ -37,7 +40,7 @@ public class Util {
         return new Image(stream, url);
     }
 
-    public static String parseEndpoint(HttpClient httpClient, Endpoint endpoint1, Category category1) throws IOException {
+    public static String parseEndpoint(OkHttpClient httpClient, Endpoint endpoint1, Category category1) throws IOException {
         String imageUrl = Util.getURL(endpoint1.getBaseUrl(), category1.getPaths());
 
         log.debug("URL: "+ imageUrl);
@@ -100,6 +103,7 @@ public class Util {
         endpoints.add(Examples.waifuEndpoint());
         endpoints.add(Examples.nekosEndpoint());
         endpoints.add(Examples.hmEndpoint());
+        endpoints.add(Examples.kawaiiEndpoint());
         return endpoints;
     }
 }
