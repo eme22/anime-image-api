@@ -126,5 +126,93 @@ public class Examples {
         return endpoint;
     }
 
+    public static Endpoint kawaiiEndpoint() {
+
+            Endpoint endpoint = new Endpoint();
+
+            endpoint.setName(KAWAII);
+            endpoint.setBaseUrl(KAWAII_BASEURL);
+            endpoint.setResponseJsonPathRegex(true);
+            endpoint.setResponseJsonPath(defaultPath);
+
+            Collection<Category> sfw = Arrays.stream(Endpoints.KAWAII_SFW.values()).map( data -> {
+
+                Category category = new Category();
+
+                category.setName(data.toString().toLowerCase());
+                Collection<String> paths = new ArrayList<>();
+                paths.add(SFW);
+                paths.add(data.toString().toLowerCase());
+                category.setPaths(paths);
+                category.setNsfw(false);
+
+                return category;
+            }).collect(Collectors.toList());
+
+            Collection<Category> nsfw = Arrays.stream(Endpoints.KAWAII_NSFW.values()).map( data -> {
+
+                Category category = new Category();
+
+                category.setName(data.toString().toLowerCase());
+                Collection<String> paths = new ArrayList<>();
+                paths.add(NSFW);
+                paths.add(data.toString().toLowerCase());
+                category.setPaths(paths);
+                category.setNsfw(true);
+
+                return category;
+            }).collect(Collectors.toList());
+
+            sfw.addAll(nsfw);
+
+            endpoint.setCategories(sfw);
+
+            return endpoint;
+    }
+
+    public static Endpoint anotherKawaiiEndpoint() {
+
+            Endpoint endpoint = new Endpoint();
+
+            endpoint.setName(ANOTHER_KAWAII);
+            endpoint.setBaseUrl(KAWAII_ANOTHER_BASEURL);
+            endpoint.setResponseJsonPathRegex(true);
+            endpoint.setResponseJsonPath(defaultPath);
+
+            Collection<Category> sfw = Arrays.stream(Endpoints.KAWAII_SFW.values()).map( data -> {
+
+                Category category = new Category();
+
+                category.setName(data.toString().toLowerCase());
+                Collection<String> paths = new ArrayList<>();
+                paths.add(SFW);
+                paths.add(data.toString().toLowerCase());
+                category.setPaths(paths);
+                category.setNsfw(false);
+
+                return category;
+            }).collect(Collectors.toList());
+
+            Collection<Category> nsfw = Arrays.stream(Endpoints.KAWAII_NSFW.values()).map( data -> {
+
+                Category category = new Category();
+
+                category.setName(data.toString().toLowerCase());
+                Collection<String> paths = new ArrayList<>();
+                paths.add(NSFW);
+                paths.add(data.toString().toLowerCase());
+                category.setPaths(paths);
+                category.setNsfw(true);
+
+                return category;
+            }).collect(Collectors.toList());
+
+            sfw.addAll(nsfw);
+
+            endpoint.setCategories(sfw);
+
+            return endpoint;
+    }
+
 
 }

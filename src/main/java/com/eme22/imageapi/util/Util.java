@@ -100,6 +100,7 @@ public class Util {
         endpoints.add(Examples.waifuEndpoint());
         endpoints.add(Examples.nekosEndpoint());
         endpoints.add(Examples.hmEndpoint());
+        endpoints.add(Examples.kawaiiEndpoint());
         return endpoints;
     }
 }

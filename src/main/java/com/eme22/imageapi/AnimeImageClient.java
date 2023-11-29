@@ -126,7 +126,12 @@ public class AnimeImageClient {
     public String getImage(HM_NSFW category) {
         return getImage(HM, category.toString());
     }
-
+    public String getImage(KAWAII_SFW category) {
+        return getImage(HM, category.toString());
+    }
+    public String getImage(KAWAII_NSFW category) {
+        return getImage(HM, category.toString());
+    }
     public String getImage(HM_SFW category) {
         return getImage(HM, category.toString());
     }
@@ -195,6 +200,18 @@ public class AnimeImageClient {
 
     public Image downloadNekosImage(NEKO category) {
         return downloadImage(NEKOS, category.toString());
+    }
+
+    public Image downloadKawaiiImage(KAWAII_SFW category) {
+        return downloadImage(KAWAII, category.toString());
+    }
+
+    public Image downloadKawaiiImage(String category) {
+        return downloadImage(KAWAII, category);
+    }
+
+    public Image downloadKawaiiImage(KAWAII_NSFW category) {
+        return downloadImage(KAWAII, category.toString());
     }
 
     public Image downloadImage(String endpoint, String category) {
