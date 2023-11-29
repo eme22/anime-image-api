@@ -27,7 +27,7 @@ dependencies {
     implementation 'org.json:json:20231013'
     implementation 'com.jayway.jsonpath:json-path:2.8.0'
 
-    api  'org.apache.httpcomponents:httpclient:4.5.14'
+    api 'org.apache.httpcomponents:httpclient:4.5.14'
 
 }
 
