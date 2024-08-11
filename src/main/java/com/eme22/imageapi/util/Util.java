@@ -4,10 +4,11 @@ import com.eme22.imageapi.model.Category;
 import com.eme22.imageapi.model.Endpoint;
 import com.jayway.jsonpath.JsonPath;
 import lombok.extern.log4j.Log4j2;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -20,15 +21,18 @@ import java.util.regex.Pattern;
 @Log4j2
 public class Util {
 
-    private static String getResponse(HttpClient client, String url) throws IOException {
+    private static String getResponse(CloseableHttpClient client, String url) throws IOException {
 
         HttpGet request = new HttpGet(url);
 
-        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request)) {
+        try (CloseableHttpResponse response = client.execute(request)) {
 
-            log.debug("Response Status: "+ response.getStatusLine().getReasonPhrase());
+            log.debug("Response Status: "+ response.getCode());
 
             return EntityUtils.toString(response.getEntity());
+        } catch (ParseException e) {
+            log.error("Error parsing response", e);
+            return null;
         }
     }
 
@@ -37,7 +41,7 @@ public class Util {
         return new Image(stream, url);
     }
 
-    public static String parseEndpoint(HttpClient httpClient, Endpoint endpoint1, Category category1) throws IOException {
+    public static String parseEndpoint(CloseableHttpClient httpClient, Endpoint endpoint1, Category category1) throws IOException {
         String imageUrl = Util.getURL(endpoint1.getBaseUrl(), category1.getPaths());
 
         log.debug("URL: "+ imageUrl);

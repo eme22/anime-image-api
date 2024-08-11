@@ -7,8 +7,8 @@ import com.eme22.imageapi.util.Util;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ import static com.eme22.imageapi.util.Endpoints.*;
 import static com.eme22.imageapi.util.Util.getBuffer;
 import static com.eme22.imageapi.util.Util.parseEndpoint;
 
+@Setter
 @Log4j2
 public class AnimeImageClient {
 
-    @Setter
-    private HttpClient httpClient = HttpClients.createDefault();
-    @Getter @Setter
+    private CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+    @Getter
     private Collection<Endpoint> endpoints = new ArrayList<>();
 
     public AnimeImageClient() {
@@ -36,12 +36,12 @@ public class AnimeImageClient {
         }
     }
 
-    public AnimeImageClient(HttpClient httpClient) {
+    public AnimeImageClient(CloseableHttpClient httpClient) {
         this.httpClient = httpClient;
         registerEndPoints(Util.getDefaultEndpoints());
     }
 
-    public AnimeImageClient(HttpClient httpClient, boolean addDefault) {
+    public AnimeImageClient(CloseableHttpClient httpClient, boolean addDefault) {
         this.httpClient = httpClient;
         if (addDefault) {
             registerEndPoints(Util.getDefaultEndpoints());
@@ -60,12 +60,12 @@ public class AnimeImageClient {
         }
     }
 
-    public AnimeImageClient(HttpClient httpClient, Collection<Endpoint> endpoints) {
+    public AnimeImageClient(CloseableHttpClient httpClient, Collection<Endpoint> endpoints) {
         this.httpClient = httpClient;
         this.endpoints = endpoints;
     }
 
-    public AnimeImageClient(HttpClient httpClient, Collection<Endpoint> endpoints, boolean addDefault) {
+    public AnimeImageClient(CloseableHttpClient httpClient, Collection<Endpoint> endpoints, boolean addDefault) {
         this.httpClient = httpClient;
         this.endpoints = endpoints;
         if (addDefault) {

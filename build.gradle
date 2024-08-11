@@ -10,7 +10,7 @@ java {
 }
 
 group 'com.eme22'
-version = '0.9.3'
+version = '0.9.4'
 
 repositories {
     mavenCentral()
@@ -25,9 +25,9 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-api:2.21.1'
 
     implementation 'org.json:json:20231013'
-    implementation 'com.jayway.jsonpath:json-path:2.8.0'
+    implementation 'com.jayway.jsonpath:json-path:2.9.0'
 
-    api 'org.apache.httpcomponents:httpclient:4.5.14'
+    api 'org.apache.httpcomponents.client5:httpclient5:5.3.1'
 
 }
 
